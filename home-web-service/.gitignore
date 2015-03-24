@@ -3,4 +3,5 @@
 *.war
 *.log
 ./target/*
+.settings/*
  

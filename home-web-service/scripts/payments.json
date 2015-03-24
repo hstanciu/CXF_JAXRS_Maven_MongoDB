@@ -1,0 +1,24 @@
+[
+	  {
+			"_id":NumberInt(0),
+			"payee":"CIBC",
+			"payeeProduct":"PETRO-POINTS™ MasterCard",  
+			"cycle": NumberInt(22),
+			"amountInCents"  : NumberLong(123455), 
+			"dueDate"  :  "20150330",
+			"paymentLimitDate"  :  "20150328",
+			"paidDate"  :  "",
+			"deprecated"  :  false
+		},
+		{
+			"_id" : NumberInt(1),
+			"payee"  : "RBC",
+			"payeeProduct"  : "Visa Gold",  
+			"cycle"  :  NumberInt(25),
+			"amountInCents"  : NumberLong(44322), 
+			"dueDate"  :  "20150328",
+			"paymentLimitDate"  :  "20150326",
+			"paidDate"  :  "",
+			"deprecated"  :  false
+		}
+]

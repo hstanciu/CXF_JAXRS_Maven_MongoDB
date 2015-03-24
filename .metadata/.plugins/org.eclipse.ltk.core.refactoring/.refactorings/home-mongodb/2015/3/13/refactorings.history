@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;home-mongodb/src/test/resources/testApplicationContext.xml&apos; to &apos;applicationContext-test.xml&apos;" description="Rename resource &apos;testApplicationContext.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/test/resources/testApplicationContext.xml" name="applicationContext-test.xml" stamp="1427217400130" updateReferences="true"/>
+</session>

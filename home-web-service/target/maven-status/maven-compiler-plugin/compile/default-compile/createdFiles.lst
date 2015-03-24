@@ -1,0 +1,6 @@
+biz\korwin\web\service\home\PaymentWSImpl.class
+biz\korwin\web\service\home\service\IPaymentService.class
+biz\korwin\web\service\home\IPaymentWS.class
+biz\korwin\web\service\home\service\PaymentServiceImpl.class
+biz\korwin\web\service\home\model\PaymentVO.class
+biz\korwin\web\service\home\model\PaymentsVO.class

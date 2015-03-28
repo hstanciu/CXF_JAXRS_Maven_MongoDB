@@ -3,10 +3,13 @@ package biz.korwin.web.service.home.model;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Model class. Represents a payment.
  * 
  * */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement(name="payment")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PaymentVO {
@@ -129,4 +132,5 @@ public class PaymentVO {
 	public void setDeprecated(boolean deprecated) {
 		this.deprecated = deprecated;
 	}
+	
 }

@@ -1,5 +1,7 @@
 package biz.korwin.test.web;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,16 @@ public class PaymentsTest {
 		PaymentTO paymentTO = paymentsDAO.getPaymentById(1L);
 		
 		System.out.println(paymentTO);
+	
+	}
+	
+	
+	@Test
+	public void testGetPaymentsByDate() {
+		
+		List<PaymentTO> listOfPayments = paymentsDAO.getPaymentsByDate("20150328");
+		
+		System.out.println(listOfPayments);
 	
 	}
 

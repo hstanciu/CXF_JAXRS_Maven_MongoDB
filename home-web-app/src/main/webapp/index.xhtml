@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+ 
+    <h:body>
+ 
+    	<h1>JSF 2.0 + Spring Example</h1>
+ 
+ 		<h:messages style="color:red" />
+ 		
+ 		<h:form>
+ 			<h:panelGrid columns="3" >
+ 			
+	 			<h:outputText value="#{msg['login.user.name']}" />
+	 			<h:inputText id="userName" value="#{loginBean.userName}">
+					<f:validateLength minimum="5" maximum="10" />
+				</h:inputText>
+				<h:message for="userName" style="color:red" />
+	
+	 			
+	 			<h:outputText value="#{msg['login.password']}" />
+	 	    	<h:inputSecret id="password" label="Password" value="#{loginBean.password}">
+	 	    		<f:validateLength minimum="5" maximum="10" />
+	 	    	</h:inputSecret>
+	 	    	<h:message for="password" style="color:red" />
+	 	    	
+	 			
+	 			<h:commandButton action="#{loginBean.login}" value="#{msg['login.login']}"/>
+	 			
+	 		</h:panelGrid>
+	 		
+ 		</h:form>
+ 
+    </h:body>
+ 
+</html>

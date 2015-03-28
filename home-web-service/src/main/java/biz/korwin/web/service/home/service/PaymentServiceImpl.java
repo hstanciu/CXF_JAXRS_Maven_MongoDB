@@ -71,7 +71,6 @@ public class PaymentServiceImpl implements IPaymentService {
 
 	@Override
 	public List<PaymentVO> getPaymentsByDate(String date) {
-		// TODO Auto-generated method stub
 		
 		List<PaymentTO> paymentsTOList = paymentDAO.getPaymentsByDate(date);
 		

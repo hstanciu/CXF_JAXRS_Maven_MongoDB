@@ -111,8 +111,13 @@ public class PaymentDAOImpl implements IPaymentDAO{
 
 	@Override
 	public List<PaymentTO> getPaymentsByDate(String date) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Query query = new Query();
+		
+		query.addCriteria(Criteria.where("paymentLimitDate").is(date));
+		List<PaymentTO> listOfPayments = mongoTemplate.find(query, PaymentTO.class, "payments");
+		
+		return listOfPayments;
 	}
 
 }

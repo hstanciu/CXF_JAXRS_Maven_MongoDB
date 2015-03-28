@@ -3,6 +3,16 @@ package biz.korwin.web.service.home;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -16,6 +26,7 @@ import biz.korwin.web.service.home.service.IPaymentService;
 /**
  * Web service implementation.
  * */
+@Path("/payments")
 @Component("paymentsService")
 public class PaymentWSImpl implements IPaymentWS {
 
@@ -24,8 +35,12 @@ public class PaymentWSImpl implements IPaymentWS {
 	@Autowired
 	IPaymentService paymentService;
 	
+	@GET
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Path("/date/{date}")
 	@Override
-	public PaymentsVO getPaymentsByDate(String date) {
+	public PaymentsVO getPaymentsByDate(@PathParam("date") String date) {
 
 		
 		List<PaymentVO> listOfPayments = paymentService.getPaymentsByDate(date);
@@ -39,23 +54,26 @@ public class PaymentWSImpl implements IPaymentWS {
 	
 
 	@Override
-	public Response delete(long id) {
+	@DELETE
+	@Path("/{id}")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public boolean delete(@PathParam("id") long id) {
 		
-		if(paymentService.delete(id)){
-			return Response.status(Status.OK).build();
-		}else{
-			return Response.status(Status.EXPECTATION_FAILED).build();
-		}
+		return paymentService.delete(id);
 	}
 
 	@Override
-	public PaymentVO update(long id, String payee,
-			String payeeProduct,
-			int cycle,
-			int amountInCents,
-			String dueDate,
-			String paymentLimitDate,
-			boolean deprecated) {
+	@PUT
+	@Path("/{id}")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public PaymentVO update(@PathParam("id") long id, 
+			@FormParam("payee")String payee,
+			@FormParam("payeeProduct")String payeeProduct,
+			@FormParam("cycle")int cycle,
+			@FormParam("amountInCents")int amountInCents,
+			@FormParam("dueDate")String dueDate,
+			@FormParam("paymentLimitDate")String paymentLimitDate,
+			@FormParam("deprecated")boolean deprecated) {
 		
 		PaymentVO updatePayment = new PaymentVO();
 		
@@ -75,8 +93,12 @@ public class PaymentWSImpl implements IPaymentWS {
 		return paymentUpdated;
 	}
 
+	@GET
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Path("/{id}")
 	@Override
-	public PaymentVO getPaymentById(long id) {
+	public PaymentVO getPaymentById(@PathParam("id") long id) {
 		
 		PaymentVO payment = paymentService.getPaymentById(id);
 
@@ -86,9 +108,16 @@ public class PaymentWSImpl implements IPaymentWS {
 
 
 	@Override
-	public PaymentVO create(String payee, String payeeProduct,
-			int cycle, int amountInCents, String dueDate,
-			String paymentLimitDate, boolean deprecated) {
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public PaymentVO create(@FormParam("payee")String payee,
+			@FormParam("payeeProduct")String payeeProduct,
+			@FormParam("cycle")int cycle,
+			@FormParam("amountInCents")int amountInCents,
+			@FormParam("dueDate")String dueDate,
+			@FormParam("paymentLimitDate")String paymentLimitDate,
+			@FormParam("deprecated")boolean deprecated) {
 		
 		PaymentVO payment = new PaymentVO();
 		payment.setAmountInCents(amountInCents);
